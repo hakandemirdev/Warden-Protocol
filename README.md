@@ -145,7 +145,8 @@ validator.json dosyamızı düzenlemek üzere açalım.
 nano /root/wardenprotocol/validator.json
 ```
 Validatör ayarlarımızı yapıyoruz.validator.json dosyasının içerisine aşağıdaki kod bloğunu yapıştıralım.
-Yapıştırmadan önce pubkey kısmına kendi public keyinizi yazın.
+Yapıştırmadan önce pubkey kısmına kendi public keyinizi yazın. Diğer kısımları da kendinize göre düzenleyin.
+Düzenledikten sonra ctrl+x  sonrasında y ve enter ile kaydedelim.
 ```
 {
         "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"public_keyinizi_buraya_yazin"},
@@ -161,5 +162,13 @@ Yapıştırmadan önce pubkey kısmına kendi public keyinizi yazın.
         "min-self-delegation": "1"
 }
 
+```
+Node'umuzun senkronize olup olmadığını kontrol edelim. Senkronize olduktan sonra aşağıdaki komutla validatörümüzü oluşturalım.
+```
+wardend tx staking create-validator /root/wardenprotocol/validator.json \
+    --from=cüzdan-adi \
+    --chain-id=alfama \
+    --fees=500uward \
+    --node=http://localhost:11157
 ```
 
