@@ -129,3 +129,32 @@ Daha önce kullandığınız bir cüzdanı import etmek için aşağıdaki komut
 ```
 wardend keys add cüzdan-adi --recover
 ```
+Faucet'ten test tokeni almamız gerekiyor.
+Komutu girdikten sonra tokenlarımızın gelip gelmediğini cüzdan adresimizi girerek kontrol ediyoruz.
+[Explorer](https://warden-explorer.paranorm.pro/warden/block)
+```
+curl --data '{"address": "cüzdan-adresi-yaz"}' https://faucet.alfama.wardenprotocol.org
+
+```
+Validatör public keyimizi öğreniyoruz ve not alıyoruz.
+```
+wardend comet show-validator
+```
+Validatör ayarlarımızı yapıyoruz.validator.json dosyasının içerisine aşağıdaki kod bloğunu yapıştıralım.
+```
+{
+        "pubkey": Yukarıda not aldığımız public keyi buraya yazıyoruz.,
+        "amount": "1000000stake",
+        "moniker": "moniker_adınızı_yazın",
+        "identity": "optional identity signature (ex. UPort or Keybase)",
+        "website": "web siteniz varsa adresni buraya yazın",
+        "security": "email adresinizi yazın",
+        "details": "validatörünüz hakkındaki detayları buraya yazabilirsiniz.",
+        "commission-rate": "0.1",
+        "commission-max-rate": "0.2",
+        "commission-max-change-rate": "0.01",
+        "min-self-delegation": "1"
+}
+
+```
+
