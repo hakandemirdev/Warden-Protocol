@@ -98,8 +98,34 @@ sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.warden/config/config.tom
 
 ```
 
-Monitoring
+Hızlı seknronizasyon işlemi
 ```
-http://ip_address:3000/d/yns_4vFVk/nwaku-monitoring
+cd $HOME
+apt install lz4
+sudo systemctl stop wardend
+cp $HOME/.warden/data/priv_validator_state.json $HOME/.warden/priv_validator_state.json.backup
+rm -rf $HOME/.warden/data
+curl -o - -L http://37.120.189.81/warden_testnet/warden_snap.tar.lz4 | lz4 -c -d - | tar -x -C $HOME/.warden
+mv $HOME/.warden/priv_validator_state.json.backup $HOME/.warden/data/priv_validator_state.json
 ```
+Port ayarlarını yapıyoruz.
+```
+CUSTOM_PORT=111
+sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}58\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}57\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}60\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}56\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}66\"%" $HOME/.warden/config/config.toml
+sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}17\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}80\"%; s%^address = \"locaklhost:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}90\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}91\"%" $HOME/.warden/config/app.toml
 
+```
+Warden Node'umuzu başlatalım.
+```
+sudo systemctl restart wardend
+journalctl -fu wardend -o cat
+
+```
+Cüzdan oluşturuyoruz. Mnemonic ve cüzdan adresimi not alalım.
+```
+wardend keys add cüzdan-adi
+```
+Daha önce kullandığınız bir cüzdanı import etmek için aşağıdaki komutu kullanabilirsiniz.
+```
+wardend keys add cüzdan-adi --recover
+```
