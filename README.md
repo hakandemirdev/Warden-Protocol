@@ -171,4 +171,9 @@ wardend tx staking create-validator /root/wardenprotocol/validator.json \
     --fees=500uward \
     --node=http://localhost:11157
 ```
+/root/.warden/config/ klasörü içindeki aşağıdaki dosyaların yedeklerini alalım.
+```
+priv_validator_key.json
+node_key.json
+```
 
