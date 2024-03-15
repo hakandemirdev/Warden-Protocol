@@ -147,7 +147,7 @@ Yapıştırmadan önce Public key kısmına kendi public keyinizi yazın.
         "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"public_keyinizi_buraya_yazin"},
         "amount": "1000000uward",
         "moniker": "moniker_adınızı_yazın",
-        "identity": "optional identity signature (ex. UPort or Keybase)",
+        "identity": "Kimlik imzanız, bu kısmı boş bırakabilirsiniz",
         "website": "web siteniz varsa adresni buraya yazın",
         "security": "email adresinizi yazın",
         "details": "validatörünüz hakkındaki detayları buraya yazabilirsiniz.",
