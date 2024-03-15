@@ -143,8 +143,8 @@ wardend comet show-validator
 Validatör ayarlarımızı yapıyoruz.validator.json dosyasının içerisine aşağıdaki kod bloğunu yapıştıralım.
 ```
 {
-        "pubkey": Yukarıda not aldığımız public keyi buraya yazıyoruz.,
-        "amount": "1000000stake",
+        "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"public_keyinizi_buraya_yazin"},
+        "amount": "1000000uward",
         "moniker": "moniker_adınızı_yazın",
         "identity": "optional identity signature (ex. UPort or Keybase)",
         "website": "web siteniz varsa adresni buraya yazın",
