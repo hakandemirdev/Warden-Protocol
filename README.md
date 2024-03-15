@@ -140,8 +140,12 @@ Validatör public keyimizi öğreniyoruz ve not alıyoruz.
 ```
 wardend comet show-validator
 ```
+validator.json dosyamızı düzenlemek üzere açalım.
+```
+nano /root/wardenprotocol/validator.json
+```
 Validatör ayarlarımızı yapıyoruz.validator.json dosyasının içerisine aşağıdaki kod bloğunu yapıştıralım.
-Yapıştırmadan önce Public key kısmına kendi public keyinizi yazın.
+Yapıştırmadan önce pubkey kısmına kendi public keyinizi yazın.
 ```
 {
         "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"public_keyinizi_buraya_yazin"},
